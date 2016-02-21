@@ -1,0 +1,150 @@
+package com.bellinfo.exam.model;
+
+import java.util.Arrays;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+@Entity
+@Table(name="FACULTY_REGISTER")
+public class FacultyRegister {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="FACULTY_ID")
+	private int id;
+	@Column(name="FACULTY_NAME")
+	private String name;
+	@Column(name="FACULTY_USERNAME")
+	private String userName;
+	@Column(name="FACULTY_PASSWORD")
+	private String passWord;
+	@Transient
+	private String rePassWord;
+	@OneToMany
+	private String[] subjects;
+	
+	public FacultyRegister(){
+	}
+
+	public FacultyRegister(int id, String name, String userName, String password, String rePassword,
+			String[] subjects) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.userName = userName;
+		this.password = password;
+		this.rePassword = rePassword;
+		this.subjects = subjects;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRePassword() {
+		return rePassword;
+	}
+
+	public void setRePassword(String rePassword) {
+		this.rePassword = rePassword;
+	}
+
+	public String[] getSubjects() {
+		return subjects;
+	}
+
+	public void setSubjects(String[] subjects) {
+		this.subjects = subjects;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((rePassword == null) ? 0 : rePassword.hashCode());
+		result = prime * result + Arrays.hashCode(subjects);
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FacultyRegister other = (FacultyRegister) obj;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (rePassword == null) {
+			if (other.rePassword != null)
+				return false;
+		} else if (!rePassword.equals(other.rePassword))
+			return false;
+		if (!Arrays.equals(subjects, other.subjects))
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "FacultyRegister [id=" + id + ", name=" + name + ", userName=" + userName + ", password=" + password
+				+ ", rePassword=" + rePassword + ", subjects=" + Arrays.toString(subjects) + "]";
+	}
+	
+	
+}

@@ -1,0 +1,5 @@
+package com.bellinfo.exam.service;
+
+public interface FacultyService {
+
+}

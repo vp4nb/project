@@ -6,34 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bellinfo.exam.model.FacultyLogin;
+import com.bellinfo.exam.model.Faculty;
+import com.bellinfo.exam.model.Login;
 import com.bellinfo.exam.repository.FacultyRepository;
+import com.bellinfo.exam.repository.FacultyRepositoryImpl;
 
-@Service
+@Service("facultyService")
 @Transactional
-public class FacultyServiceImpl {
+public class FacultyServiceImpl implements FacultyService{
 	
 	@Autowired
 	FacultyRepository frepo;
 
-	public int saveFaculty(FacultyLogin flogin)
+	public int saveFaculty(Faculty faculty)
 	{
-		return frepo.saveFaculty(flogin);
+		return frepo.saveFaculty(faculty);
 	}
-	public List<FacultyLogin> getFaculty()
+	public Faculty getFaculty(Login login)
 	{
-		return frepo.getFaculty();
+		return frepo.getFaculty(login);
 	}
-	public FacultyLogin getFaculty(int id)
-	{
-		return frepo.getFaculty(id);
-	}
-	public void updateFaculty(FacultyLogin flogin)
+	/*public void updateFaculty(FacultyLogin flogin)
 	{
 		frepo.updateFaculty(flogin);
 	}
 	public void deleteFaculty(int id)
 	{
 		frepo.deleteFaculty(id);
-	}
+	}*/
 }

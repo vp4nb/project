@@ -12,7 +12,7 @@
 <tr>
 <td colspan="2" height="10%" align="center" style="background-color: red"><tiles:insertAttribute name="header"/></td></tr>
 <tr height="80%" ><td width="20%" style="background-color: blue"><tiles:insertAttribute name="menu"/></td>
-	<td style="background-color: orange; align: center" width="80%"><tiles:insertAttribute name="title"/>
+	<td style="background-color: orange; align: center" width="80%">
 		<tiles:insertAttribute name="body"/></td></tr>
 <tr><td colspan="2" height="10%"><tiles:insertAttribute name="footer"/></td></tr>
 </table>

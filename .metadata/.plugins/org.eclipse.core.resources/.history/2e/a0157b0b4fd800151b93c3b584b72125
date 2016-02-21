@@ -1,0 +1,37 @@
+package com.bellinfo.exam.control;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.bellinfo.exam.model.Faculty;
+import com.bellinfo.exam.model.FacultyLogin;
+
+@Controller
+public class FacultyController {
+
+	@Autowired
+	Faculty faculty;
+	
+	@RequestMapping(value="/faculty-register", method=RequestMethod.GET)
+	public String FacultyRegister(Model model){
+		model.addAttribute("faculty",faculty);
+		return "faculty-register";
+	}
+	@RequestMapping(value="/faculty-register", method=RequestMethod.POST)
+	public String FacultyRegister(@Valid @ModelAttribute("faculty") Faculty faculty,BindingResult br, Model model){
+		if(br.hasErrors())
+		{
+			return "faculty-register";
+		}
+		model.addAttribute("faculty",faculty);
+		return "success";
+	}
+	
+}

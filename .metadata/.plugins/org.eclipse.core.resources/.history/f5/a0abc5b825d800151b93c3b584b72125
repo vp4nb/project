@@ -1,0 +1,23 @@
+package com.bellinfo.exam.control;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.bellinfo.exam.model.Faculty;
+
+@Controller
+public class FacultyController {
+
+	@Autowired
+	Faculty faculty;
+	@RequestMapping(value="/faculty-register", method=RequestMethod.GET)
+	public String FacultyRegister(Model model){
+		model.addAttribute("faculty",faculty);
+		return "faculty-register";
+	}
+	
+	
+}

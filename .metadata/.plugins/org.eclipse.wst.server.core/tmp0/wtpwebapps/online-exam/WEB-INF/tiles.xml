@@ -5,25 +5,36 @@
  
 <tiles-definitions>
      <definition name="base.defination" template="/WEB-INF/pages/layout.jsp">
-         <put-attribute name="title" value=""/>
          <put-attribute name="header" value="/WEB-INF/pages/header.jsp"/>
          <put-attribute name="menu" value="/WEB-INF/pages/menu.jsp"/>
          <put-attribute name="body" value=""/>
          <put-attribute name="footer" value="/WEB-INF/pages/footer.jsp" />
      </definition>
  
-     <definition name="faculty-reg" extends="base.defination">
-         <put-attribute name="title" value="faculty registration"/>
-         <put-attribute name="body" value="/WEB-INF/pages/faculty-reg.jsp"/>
+     <definition name="faculty-register" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/pages/faculty-register.jsp"/>
      </definition>
  
     <definition name="success" extends="base.defination">
-        <put-attribute name="title" value="success page"/>
         <put-attribute name="body" value="/WEB-INF/pages/success.jsp"/>
     </definition>
     
+     <definition name="student-register" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/pages/student-register.jsp"/>
+     </definition>
+ 
+    <definition name="success-std" extends="base.defination">
+        <put-attribute name="body" value="/WEB-INF/pages/success-std.jsp"/>
+    </definition>
+    
+    <definition name="faculty-login" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/pages/faculty-login.jsp"/>
+     </definition>
+    
+    <definition name="student-login" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/pages/student-login.jsp"/>
+     </definition>
      <definition name="fac-list" extends="base.defination">
-        <put-attribute name="title" value="list"/>
         <put-attribute name="body" value="/WEB-INF/pages/faculty-list.jsp"/>
     </definition>
    </tiles-definitions>

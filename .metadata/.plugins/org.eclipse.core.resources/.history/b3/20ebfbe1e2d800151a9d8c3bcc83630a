@@ -1,0 +1,8 @@
+package com.bellinfo.exam.service;
+
+import com.bellinfo.exam.model.Student;
+
+public interface StudentService {
+
+	public int saveStudent(Student student);
+}

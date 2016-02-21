@@ -1,0 +1,6 @@
+package com.bellinfo.exam.service;
+
+public interface StudentService {
+
+	public int saveStudent(Student student);
+}

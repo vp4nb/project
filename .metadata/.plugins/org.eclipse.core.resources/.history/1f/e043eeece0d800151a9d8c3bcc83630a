@@ -1,0 +1,37 @@
+package com.bellinfo.exam.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.bellinfo.exam.model.Faculty;
+import com.bellinfo.exam.model.FacultyLogin;
+import com.bellinfo.exam.repository.FacultyRepository;
+import com.bellinfo.exam.repository.FacultyRepositoryImpl;
+
+@Service("facultyService")
+@Transactional
+public class FacultyServiceImpl implements FacultyService{
+	
+	@Autowired
+	FacultyRepository frepo;
+
+	public int saveFaculty(Faculty faculty)
+	{
+		return frepo.saveFaculty(faculty);
+	}
+	public Faculty getFaculty(FacultyLogin facultyLogin)
+	{
+		return frepo.getFaculty(facultyLogin);
+	}
+	/*public void updateFaculty(FacultyLogin flogin)
+	{
+		frepo.updateFaculty(flogin);
+	}
+	public void deleteFaculty(int id)
+	{
+		frepo.deleteFaculty(id);
+	}*/
+}

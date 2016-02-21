@@ -1,0 +1,20 @@
+package com.bellinfo.exam.service;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bellinfo.exam.model.Student;
+
+@Service
+@Transactional
+public class StudentServiceImpl implements StudentService{
+	@Autowired
+	StudentDAO student;
+	public int saveStudent(Student student) {
+		return student.saveStudent(student);
+	}
+
+	
+}

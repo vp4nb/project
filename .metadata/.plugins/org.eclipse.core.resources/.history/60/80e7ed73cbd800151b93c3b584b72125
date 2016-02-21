@@ -1,0 +1,7 @@
+package com.bellinfo.exam.repository;
+
+import com.bellinfo.exam.model.Student;
+
+public interface StudentDAO {
+	public int saveStudent(Student student);
+}

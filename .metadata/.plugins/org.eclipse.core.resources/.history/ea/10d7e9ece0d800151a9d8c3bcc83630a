@@ -1,0 +1,10 @@
+package com.bellinfo.exam.service;
+
+import com.bellinfo.exam.model.Faculty;
+import com.bellinfo.exam.model.FacultyLogin;
+
+public interface FacultyService {
+
+	public int saveFaculty(Faculty faculty);
+	public Faculty getFaculty(FacultyLogin facultyLogin);
+}

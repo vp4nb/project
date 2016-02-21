@@ -9,8 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-name: ${fac.userName} <br/>
-email: ${fac.passWord}
-are stored successfully.
+your id is:${facultyId} 
 </body>
 </html>

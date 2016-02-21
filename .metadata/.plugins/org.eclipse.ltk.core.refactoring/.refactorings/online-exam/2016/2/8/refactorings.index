@@ -3,3 +3,6 @@
 1456000720901	Rename package 'com.bellinfo.faculty.model'
 1456000733164	Rename package 'com.bellinfo.faculty.repository'
 1456000748245	Rename package 'com.bellinfo.faculty.service'
+1456005761115	Rename type 'FacultyRegister'
+1456008690985	Rename type 'FacultyController'
+1456009391238	Rename resource 'faculty-reg.jsp'
