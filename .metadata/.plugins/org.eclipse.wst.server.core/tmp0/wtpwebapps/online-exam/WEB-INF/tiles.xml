@@ -12,11 +12,11 @@
      </definition>
  
      <definition name="faculty-register" extends="base.defination">
-         <put-attribute name="body" value="/WEB-INF/pages/faculty-register.jsp"/>
+         <put-attribute name="body" value="/WEB-INF/faculty/faculty-register.jsp"/>
      </definition>
  
     <definition name="success" extends="base.defination">
-        <put-attribute name="body" value="/WEB-INF/pages/success.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/faculty/success.jsp"/>
     </definition>
     
      <definition name="student-register" extends="base.defination">
@@ -28,13 +28,45 @@
     </definition>
     
     <definition name="faculty-login" extends="base.defination">
-         <put-attribute name="body" value="/WEB-INF/pages/faculty-login.jsp"/>
+         <put-attribute name="body" value="/WEB-INF/faculty/faculty-login.jsp"/>
      </definition>
     
     <definition name="student-login" extends="base.defination">
          <put-attribute name="body" value="/WEB-INF/pages/student-login.jsp"/>
      </definition>
-     <definition name="fac-list" extends="base.defination">
-        <put-attribute name="body" value="/WEB-INF/pages/faculty-list.jsp"/>
+     
+      <definition name="post-exam" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/post-exam.jsp"/>
+     </definition>
+     
+      <definition name="add-post-exam-subject" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/add-post-exam-subject.jsp"/>
+     </definition>
+     
+     <definition name="post-exam-subject-test" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/post-exam-subject-test.jsp"/>
+     </definition>
+     
+     <definition name="add-post-exam-subject-test" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/add-post-exam-subject-test.jsp"/>
+     </definition>
+     
+     <definition name="faculty-profile" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/faculty-profile.jsp"/>
+     </definition>
+     
+      <definition name="add-faculty-subject" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/add-faculty-subject.jsp"/>
+     </definition>
+     
+     <definition name="faculty-subject-test" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/faculty-subject-test.jsp"/>
+     </definition>
+     
+      <definition name="add-faculty-subject-test" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/add-faculty-subject-test.jsp"/>
+     </definition>
+     <definition name="post-query" extends="base.defination">
+        <put-attribute name="body" value="/WEB-INF/faculty/post-query.jsp"/>
     </definition>
    </tiles-definitions>

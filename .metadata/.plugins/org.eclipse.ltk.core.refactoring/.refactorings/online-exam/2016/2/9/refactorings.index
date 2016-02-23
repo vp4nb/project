@@ -11,3 +11,19 @@
 1456089599433	Delete element
 1456089626602	Rename type 'FacultyLogin'
 1456090630323	Copy file
+1456182906828	Rename resource 'post-exam.jsp'
+1456183063644	Copy file
+1456194820979	Rename resource 'post-exam-subject.jsp'
+1456202359008	Rename type 'FacultyProfile'
+1456202708941	Rename compilation unit 'ViewProfile.java'
+1456215042849	Delete element
+1456225731628	Rename resource 'post-exam-subject-test.jsp'
+1456226204661	Delete element
+1456249969933	Rename package 'com.bellinfo.exam.control'
+1456249983215	Rename package 'com.bellinfo.exam.model'
+1456250000529	Rename package 'com.bellinfo.exam.repository'
+1456250013882	Rename package 'com.bellinfo.exam.service'
+1456250091710	Copy files
+1456250114927	Delete elements
+1456250118714	Delete element
+1456250887525	Rename package 'com.bellinfo.exam.faculty.model'

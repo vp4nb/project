@@ -1,0 +1,110 @@
+package com.bellinfo.exam.faculty.control;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.bellinfo.exam.faculty.service.ExamService;
+import com.bellinfo.exam.faculty.service.FacultyService;
+import com.bellinfo.exam.model.ExamQuestion;
+import com.bellinfo.exam.model.FacultySubject;
+import com.bellinfo.exam.model.FacultySubjectTests;
+@Controller
+public class ExamPostingControl {
+
+	@Autowired
+	ExamService examService;
+	@Autowired
+	ExamQuestion examQuestion;
+	@Autowired
+	FacultyService facultyService;
+	@Autowired
+	FacultySubject facultySubject;
+	@Autowired
+	FacultySubjectTests facultySubjectTests;
+	
+	@RequestMapping(value="/post-exam/faculty/{facultyId}", method=RequestMethod.GET)
+	public String postExam(Model model, @PathVariable Integer facultyId){
+		model.addAttribute("facultyId",facultyId);
+		model.addAttribute("subjectList", facultyService.getSubject(facultyId));
+		return "post-exam";
+	}
+	
+	@RequestMapping(value="/post-exam/faculty/{facultyId}/subject/add", method=RequestMethod.GET)
+	public String addExamSubject(Model model, @PathVariable Integer facultyId){
+		model.addAttribute("subjectList", facultyService.getSubject(facultyId));
+		model.addAttribute("subject", facultySubject);
+		return "add-post-exam-subject";
+	}
+	
+	@RequestMapping(value="/post-exam/faculty/{facultyId}/subject/add", method=RequestMethod.POST)
+	public String addExamSubject(@Valid @ModelAttribute("subject") FacultySubject subject,BindingResult br,Model model, @PathVariable Integer facultyId){
+		if(br.hasErrors()){
+			model.addAttribute("subjectList", facultyService.getSubject(facultyId));
+			return "add-post-exam-subject";
+		}
+		try {
+			facultyService.saveSubject(subject);
+			return postExam(model, facultyId);
+		} catch (Exception e) {
+			model.addAttribute("message","subject already exist");
+			model.addAttribute("subjectList", facultyService.getSubject(facultyId));
+			return "add-post-exam-subject";
+		}
+	}
+	
+	@RequestMapping(value="/post-exam/faculty/{facultyId}/subject/{subjectId}", method=RequestMethod.GET)
+	public String examSubjectTests(Model model, @PathVariable Integer facultyId, @PathVariable Integer subjectId){
+		model.addAttribute("subject", facultyService.getSubjectBySubjectId(subjectId));
+		model.addAttribute("testList", facultyService.getSubjectTests(subjectId));
+		return "post-exam-subject-test";
+	}
+	
+	@RequestMapping(value="/post-exam/faculty/{facultyId}/subject/{subjectId}/test/add", method=RequestMethod.GET)
+	public String addExamSubjectTests(Model model, @PathVariable Integer facultyId, @PathVariable Integer subjectId){
+		model.addAttribute("subject", facultyService.getSubjectBySubjectId(subjectId));
+		model.addAttribute("testList", facultyService.getSubjectTests(subjectId));
+		model.addAttribute("subjectTest", facultySubjectTests);
+		return "add-post-exam-subject-test";
+	}
+	@RequestMapping(value="/post-exam/faculty/{facultyId}/subject/{subjectId}/test/add", method=RequestMethod.POST)
+	public String addExamSubjectTests(@Valid @ModelAttribute("subjectTest") FacultySubjectTests subjectTest,BindingResult br,Model model,
+										@PathVariable Integer facultyId, @PathVariable Integer subjectId){
+		if(br.hasErrors()){
+			model.addAttribute("subject", facultyService.getSubjectBySubjectId(subjectId));
+			model.addAttribute("testList", facultyService.getSubjectTests(subjectId));
+			return "add-post-exam-subject-test";
+		}
+		try {
+			facultyService.saveSubjectTests(subjectTest);
+			return examSubjectTests(model, facultyId, subjectId);
+		} catch (Exception e) {
+			model.addAttribute("message","subject already exist");
+			model.addAttribute("subject", facultyService.getSubjectBySubjectId(subjectId));
+			model.addAttribute("testList", facultyService.getSubjectTests(subjectId));
+			return "add-post-exam-subject-test";
+		}
+	}
+	
+	@RequestMapping(value="/post-exam/faculty/{facultyId}/subject/{subjectId}/test/{testNumber}/add", method=RequestMethod.GET)
+	public String addQuery(Model model,@PathVariable Integer facultyId, @PathVariable Integer subjectId, @PathVariable Integer testNumber){
+		model.addAttribute("examQuestion", examQuestion);
+		return "post-query";
+	}
+	
+	@RequestMapping(value="/post-exam/faculty/{facultyId}/subject/{subjectId}/test/{testNumber}/add", method=RequestMethod.POST)
+	public String addQuery(@Valid @ModelAttribute("examQuestion") ExamQuestion examQuestion,BindingResult br,Model model,@PathVariable Integer facultyId, @PathVariable Integer subjectId, @PathVariable Integer testNumber){
+		if(br.hasErrors()){
+			return "post-query";
+		}
+		model.addAttribute("number", "Question "+examService.saveQuestion(examQuestion)+" is stored");
+		return "post-query";
+	}
+}

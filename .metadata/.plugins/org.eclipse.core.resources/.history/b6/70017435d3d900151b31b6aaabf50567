@@ -1,0 +1,45 @@
+package com.bellinfo.exam.control;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.bellinfo.exam.model.ExamQuestion;
+import com.bellinfo.exam.service.ExamService;
+@Controller
+public class ExamPostingControl {
+
+	@Autowired
+	ExamService examService;
+	@Autowired
+	ExamQuestion examQuestion;
+	
+	@RequestMapping(value="/post-exam/faculty/{facultyId}", method=RequestMethod.GET)
+	public String postExam(Model model, @PathVariable Integer facultyId){
+		model.addAttribute("subjectList", examService.getSubjects(facultyId));
+		System.out.println(examService.getSubjects(facultyId));
+		return "post-exam";
+	}
+	
+	@RequestMapping(value="/post-exam/subject/{subject}/test/{test}", method=RequestMethod.GET)
+	public String postExamSubjectTest(Model model, @PathVariable String subject, @PathVariable Integer test)
+	{
+		examQuestion.setSubject(subject);
+		examQuestion.setTestNumber(test);
+		model.addAttribute("examQuestion",examQuestion);
+		return "post-exam-subject";
+	}
+	@RequestMapping(value="/post-exam/subject/{subject}/test/{test}", method=RequestMethod.POST)
+	public String postExamSubjectTest(@Valid @ModelAttribute("examQuestion") ExamQuestion examQuestion,BindingResult br, Model model){
+		model.addAttribute("message", "your question "+examService.saveQuestion(examQuestion)+
+				" is submitted");
+		return "post-exam-subject";
+	}
+}

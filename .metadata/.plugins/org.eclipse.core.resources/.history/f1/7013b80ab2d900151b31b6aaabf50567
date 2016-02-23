@@ -1,0 +1,26 @@
+package com.bellinfo.exam.repository;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.bellinfo.exam.model.ExamQuestion;
+
+@Repository
+@Transactional
+public class ExamRepositoryImpl {
+
+	@Autowired
+	SessionFactory sessionFactory;
+	private Session getSession(){
+		return sessionFactory.getCurrentSession();
+	}
+	
+	public int saveQuestion(ExamQuestion examQuestion)
+	{
+		return (Integer) getSession().save(examQuestion); 
+	}
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+ 
+<tiles-definitions>
+     <definition name="base.defination" template="/WEB-INF/pages/layout.jsp">
+         <put-attribute name="header" value="/WEB-INF/pages/header.jsp"/>
+         <put-attribute name="menu" value="/WEB-INF/pages/menu.jsp"/>
+         <put-attribute name="body" value=""/>
+         <put-attribute name="footer" value="/WEB-INF/pages/footer.jsp" />
+     </definition>
+ 
+     <definition name="faculty-register" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/pages/faculty-register.jsp"/>
+     </definition>
+ 
+    <definition name="success" extends="base.defination">
+        <put-attribute name="body" value="/WEB-INF/pages/success.jsp"/>
+    </definition>
+    
+     <definition name="student-register" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/pages/student-register.jsp"/>
+     </definition>
+ 
+    <definition name="success-std" extends="base.defination">
+        <put-attribute name="body" value="/WEB-INF/pages/success-std.jsp"/>
+    </definition>
+    
+    <definition name="faculty-login" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/pages/faculty-login.jsp"/>
+     </definition>
+    
+    <definition name="student-login" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/pages/student-login.jsp"/>
+     </definition>
+     
+      <definition name="post-exam" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/pages/post-exam.jsp"/>
+     </definition>
+     
+      <definition name="post-exam-subject" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/pages/post-exam-subject.jsp"/>
+     </definition>
+     
+     <definition name="faculty-profile" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/pages/faculty-profile.jsp"/>
+     </definition>
+     
+     <definition name="fac-list" extends="base.defination">
+        <put-attribute name="body" value="/WEB-INF/pages/faculty-list.jsp"/>
+    </definition>
+   </tiles-definitions>

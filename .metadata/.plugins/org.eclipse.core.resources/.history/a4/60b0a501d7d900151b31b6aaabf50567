@@ -1,0 +1,11 @@
+package com.bellinfo.exam.repository;
+
+import java.util.List;
+
+import com.bellinfo.exam.model.ExamQuestion;
+
+public interface ExamRepository {
+
+	public int saveQuestion(ExamQuestion examQuestion);
+	public String getSubjects(int facultyId);
+}

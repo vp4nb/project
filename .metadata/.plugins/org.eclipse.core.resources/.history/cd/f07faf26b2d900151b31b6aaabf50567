@@ -1,0 +1,19 @@
+package com.bellinfo.exam.service;
+
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import com.bellinfo.exam.model.ExamQuestion;
+import com.bellinfo.exam.repository.ExamRepository;
+
+@Service
+@Transactional
+public class ExamServiceImpl implements ExamService{
+
+	ExamRepository  examRepository;
+	public int saveQuestion(ExamQuestion examQuestion) {
+		return examRepository.saveQuestion(examQuestion);
+	}
+
+}

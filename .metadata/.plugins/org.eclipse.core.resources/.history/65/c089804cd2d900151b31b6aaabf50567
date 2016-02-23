@@ -1,0 +1,40 @@
+package com.bellinfo.exam.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.loader.custom.Return;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bellinfo.exam.model.ExamQuestion;
+import com.bellinfo.exam.repository.ExamRepository;
+
+@Service("examService")
+@Transactional
+public class ExamServiceImpl implements ExamService{
+
+	@Autowired
+	ExamRepository  examRepository;
+	
+	public List<String> getSubjects(int facultyId){
+		
+		List<String> list= new ArrayList<String>();
+		String subject = examRepository.getSubjects(facultyId);
+		int num=0;
+		while(subject.length()>0 && num<0){
+			num=subject.indexOf(",");
+		  list.add(subject.substring(0,num).trim());
+		  subject=subject.substring(num+1);
+		  num=num+1;
+		}
+		list.add(subject.trim());
+		return list;
+	}	
+	public int saveQuestion(ExamQuestion examQuestion) {
+		return examRepository.saveQuestion(examQuestion);
+	}
+
+}

@@ -1,0 +1,8 @@
+package com.bellinfo.exam.model;
+
+public class FacultySubjectTests {
+
+	private int id;
+	private String test;
+	private int 
+}
