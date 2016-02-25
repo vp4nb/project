@@ -1,20 +1,20 @@
 package com.bellinfo.exam.model;
 
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 @Entity
 @Table(name="STUDENT_REGISTER")
-@Component
+@Component("student")
 public class Student {
 
 
@@ -23,23 +23,26 @@ public class Student {
 	@Column(name="STUDENT_ID", unique=true, nullable=false)
 	private int id;
 	@Column(name="STUDENT_NAME", nullable=false)
+	@NotBlank
 	private String name;
-	@Column(name="STUDENT_USERNAME", nullable=false)
+	@Column(name="STUDENT_USERNAME", unique=true, nullable=false)
+	@NotBlank
 	private String userName;
 	@Column(name="STUDENT_PASSWORD", nullable=false)
+	@NotBlank
 	private String passWord;
 	@Transient
+	@NotBlank
 	private String rePassWord;
 	@Column(name="STUDENT_EMAIL", nullable=false, unique=true)
+	@NotBlank
+	@Email
 	private String email;
-	@Column(name="STUDENT_SUBJECTS")
-	private String[] subjects;
-	
-	public Student(){
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-
-	public Student(int id, String name, String userName, String passWord, String rePassWord, String email,
-			String[] subjects) {
+	public Student(int id, String name, String userName, String passWord, String rePassWord, String email) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -47,65 +50,43 @@ public class Student {
 		this.passWord = passWord;
 		this.rePassWord = rePassWord;
 		this.email = email;
-		this.subjects = subjects;
 	}
-
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public String getUserName() {
 		return userName;
 	}
-
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
 	public String getPassWord() {
 		return passWord;
 	}
-
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
-
 	public String getRePassWord() {
 		return rePassWord;
 	}
-
 	public void setRePassWord(String rePassWord) {
 		this.rePassWord = rePassWord;
 	}
-
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public String[] getSubjects() {
-		return subjects;
-	}
-
-	public void setSubjects(String[] subjects) {
-		this.subjects = subjects;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -115,11 +96,9 @@ public class Student {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((passWord == null) ? 0 : passWord.hashCode());
 		result = prime * result + ((rePassWord == null) ? 0 : rePassWord.hashCode());
-		result = prime * result + Arrays.hashCode(subjects);
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -151,8 +130,6 @@ public class Student {
 				return false;
 		} else if (!rePassWord.equals(other.rePassWord))
 			return false;
-		if (!Arrays.equals(subjects, other.subjects))
-			return false;
 		if (userName == null) {
 			if (other.userName != null)
 				return false;
@@ -160,11 +137,10 @@ public class Student {
 			return false;
 		return true;
 	}
-
 	@Override
 	public String toString() {
-		return "Faculty [id=" + id + ", name=" + name + ", userName=" + userName + ", passWord=" + passWord
-				+ ", rePassWord=" + rePassWord + ", email=" + email + ", subjects=" + Arrays.toString(subjects) + "]";
+		return "Student [id=" + id + ", name=" + name + ", userName=" + userName + ", passWord=" + passWord
+				+ ", rePassWord=" + rePassWord + ", email=" + email + "]";
 	}
-
+	
 }

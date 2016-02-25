@@ -104,8 +104,15 @@ public class ExamPostingControl {
 		if(br.hasErrors()){
 			return "post-query";
 		}
-		model.addAttribute("number", "Question "+examService.saveQuestion(examQuestion)+" is stored");
-		model.addAttribute("examQuestion", examQue);
-		return "post-query";
+		try {
+			model.addAttribute("number", "Question "+examService.saveQuestion(examQuestion)+" is stored");
+			model.addAttribute("examQuestion", examQue);
+			return "post-query";
+		} catch (Exception e) {
+			model.addAttribute("number", "Question is already added to the Test");
+			model.addAttribute("examQuestion", examQue);
+			return "post-query";
+		}
+		
 	}
 }

@@ -1,0 +1,15 @@
+package com.bellinfo.exam.student.repository;
+
+import java.util.List;
+
+import com.bellinfo.exam.model.ExamQuestion;
+import com.bellinfo.exam.model.UserExamResults;
+import com.bellinfo.exam.model.UserOption;
+
+public interface ExamLoadingRepository {
+
+	public List<ExamQuestion> getQuestionsList(int testId);
+	public Long getQuestionCount(int testId);
+	public String getAnswer(int questionId);
+	public void saveExamResult(List<UserOption> userList, UserExamResults userExamResults);
+}

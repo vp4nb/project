@@ -53,11 +53,11 @@
 	<table>
 		<tr>
 			<td></td>
-			<td>${message}</td>
+			<td><b style="color: red">${message}</b></td>
 			<td></td>
 		</tr>
 		<tr>
-			<td><form:label path="subject"/></td>
+			<td><form:label path="subject"/>New Subject: </td>
 			<td><form:input path="subject"/></td>
 			<td><form:errors path="subject" cssStyle="color:red"/></td>
 		</tr>

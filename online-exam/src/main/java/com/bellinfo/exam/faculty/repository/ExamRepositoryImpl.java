@@ -25,7 +25,7 @@ public class ExamRepositoryImpl implements ExamRepository{
 		return sessionFactory.getCurrentSession();
 	}
 	
-	public int saveQuestion(ExamQuestion examQuestion)
+	public int saveQuestion(ExamQuestion examQuestion) throws Exception
 	{
 		return (Integer) getSession().save(examQuestion); 
 	}

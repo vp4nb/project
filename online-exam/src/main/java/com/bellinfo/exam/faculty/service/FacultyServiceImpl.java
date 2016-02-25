@@ -20,7 +20,7 @@ public class FacultyServiceImpl implements FacultyService{
 	@Autowired
 	FacultyRepository frepo;
 
-	public int saveFaculty(Faculty faculty)
+	public int saveFaculty(Faculty faculty) throws Exception
 	{
 		return frepo.saveFaculty(faculty);
 	}

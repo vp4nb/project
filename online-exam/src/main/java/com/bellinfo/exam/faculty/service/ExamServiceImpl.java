@@ -19,7 +19,7 @@ public class ExamServiceImpl implements ExamService{
 	@Autowired
 	ExamRepository  examRepository;
 		
-	public int saveQuestion(ExamQuestion examQuestion) {
+	public int saveQuestion(ExamQuestion examQuestion) throws Exception {
 		return examRepository.saveQuestion(examQuestion);
 	}
 	

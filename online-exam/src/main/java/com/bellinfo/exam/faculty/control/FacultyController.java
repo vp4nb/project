@@ -33,8 +33,14 @@ public class FacultyController {
 		{
 			return "faculty-register";
 		}
-		model.addAttribute("facultyId",facultyService.saveFaculty(faculty));
-		return "success";
+		try {
+			model.addAttribute("facultyId",facultyService.saveFaculty(faculty));
+			return "success";
+		} catch (Exception e) {
+			model.addAttribute("exceptionDetails","UserName or Email already exist");
+			return "faculty-register";
+		}
+		
 	}
 	
 	

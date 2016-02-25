@@ -1,0 +1,73 @@
+package com.bellinfo.exam.faculty.repository;
+
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.bellinfo.exam.model.Faculty;
+import com.bellinfo.exam.model.FacultySubject;
+import com.bellinfo.exam.model.FacultySubjectTests;
+import com.bellinfo.exam.model.Login;
+
+@Repository("frepo")
+@Transactional
+public class FacultyRepositoryImpl implements FacultyRepository{
+
+	@Autowired
+	SessionFactory sessionFactory;
+	@Autowired
+	Faculty faculty;
+	private Session getSession(){
+		return sessionFactory.getCurrentSession();
+	}
+	public int saveFaculty(Faculty faculty)
+	{
+		return (Integer) getSession().save(faculty);
+	}
+	public Faculty getFaculty(Login login)
+	{
+		Criteria cr=getSession().createCriteria(Faculty.class);
+		Criterion crt_userName=Restrictions.ilike("userName", login.getUserName());
+		Criterion crt_passWord=Restrictions.ilike("passWord", login.getPassWord());
+		cr.add(crt_userName);
+		cr.add(crt_passWord);
+		return (Faculty) cr.uniqueResult();
+	}
+	public Faculty getFaculty(int facultyId){
+		return (Faculty) getSession().get(Faculty.class, facultyId);
+	}
+	public List<FacultySubject> getSubject(int facultyId){
+		Criteria cr=getSession().createCriteria(FacultySubject.class);
+		Criterion crt_Id=Restrictions.eq("facultyId",facultyId);
+		cr.add(crt_Id);
+		return cr.list();
+	}
+	public boolean saveSubject(FacultySubject subject) throws Exception{
+		getSession().persist(subject);
+		return true;
+	}
+	public FacultySubject getSubjectBySubjectId(int subjectId) {
+		Criteria cr=getSession().createCriteria(FacultySubject.class);
+		Criterion crt_Id=Restrictions.idEq(subjectId);
+		cr.add(crt_Id);
+		return (FacultySubject) cr.uniqueResult();
+	}
+	public List<FacultySubjectTests> getSubjectTests(int subjectId) {
+		Criteria cr=getSession().createCriteria(FacultySubjectTests.class);
+		Criterion crt_Id=Restrictions.eq("subjectId",subjectId);
+		cr.add(crt_Id);
+		return cr.list();
+	}
+	public boolean saveSubjectTests(FacultySubjectTests subjectTests) throws Exception {
+		getSession().persist(subjectTests);
+		return true;
+	}
+}

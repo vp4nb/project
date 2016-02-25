@@ -1,0 +1,44 @@
+package com.bellinfo.exam.student.repository;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.bellinfo.exam.model.ExamQuestion;
+import com.bellinfo.exam.model.FacultySubjectTests;
+
+@Repository("examLoadingRepository")
+@Transactional
+public class ExamLoadingRepositoryImpl implements ExamLoadingRepository{
+
+	@Autowired
+	SessionFactory sessionFactory;
+	private Session getSession(){
+		return sessionFactory.getCurrentSession();
+	}
+	public List<ExamQuestion> getQuestionsList(int testId){
+		Criteria cr=getSession().createCriteria(ExamQuestion.class);
+		Criterion crt_Id=Restrictions.eq("testNumber",testId);
+		cr.add(crt_Id);
+		return cr.list();
+	}
+	public Long getQuestionCount(int testId)
+	{
+		Criteria cr=getSession().createCriteria(ExamQuestion.class);
+		Criterion crt_Id=Restrictions.eq("testNumber",testId);
+		cr.add(crt_Id);
+		Projection projection=Projections.count("testNumber");
+		cr.setProjection(projection);
+		return (Long) cr.uniqueResult();
+	}
+}

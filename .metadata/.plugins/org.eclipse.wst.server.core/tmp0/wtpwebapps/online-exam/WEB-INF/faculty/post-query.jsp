@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-${number}<br/>
+<b style="color: red">${number}</b><br/>
 	<form:form action="${url}/post-exam/faculty/${facultyId}/subject/${subjectId}/test/${testNumber}/add" method="post" modelAttribute="examQuestion">
 	<table>
 		<tr>

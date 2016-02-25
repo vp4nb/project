@@ -1,0 +1,52 @@
+package com.bellinfo.exam.student.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bellinfo.exam.model.Login;
+import com.bellinfo.exam.model.Student;
+import com.bellinfo.exam.model.StudentSubject;
+import com.bellinfo.exam.student.repository.StudentRepository;
+
+@Service("studentService")
+@Transactional
+public class StudentServiceImpl implements StudentService{
+	@Autowired
+	StudentRepository srepo;
+
+	public int saveStudent(Student student) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public Student getStudent(Login login) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Student getStudent(int studentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<StudentSubject> getSubject(int studentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean saveSubject(StudentSubject subject) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public StudentSubject getSubjectBySubjectId(int subjectId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

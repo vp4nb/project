@@ -10,26 +10,23 @@
 <head>
 <c:set var="url" value="${pageContext.request.contextPath}"/>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
+<h2>Subjects List</h2>
  <c:forEach var="subject" items="${subjectList}">
      <br/> <a href="${url}/post-exam/faculty/${facultyId}/subject/${subject.id}">${subject.subject}</a><br/>
 </c:forEach>
 <br/>
 <form:form action="${url}/post-exam/faculty/${facultyId}/subject/add" method="post" modelAttribute="subject">
 	<table>
-		
 		<tr>
 			<td></td>
-			<td>${message}</td>
+			<td><b style="color: red">${message}</b></td>
 			<td></td>
 		</tr>
 		<tr>
-			<td><form:label path="subject"/></td>
+			<td><form:label path="subject"/>New Subject: </td>
 			<td><form:input path="subject"/></td>
 			<td><form:errors path="subject" cssStyle="color:red"/></td>
 		</tr>

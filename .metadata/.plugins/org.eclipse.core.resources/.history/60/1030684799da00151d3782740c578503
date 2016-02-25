@@ -1,0 +1,23 @@
+package com.bellinfo.exam.student.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bellinfo.exam.model.ExamQuestion;
+import com.bellinfo.exam.student.repository.ExamLoadingRepository;
+
+@Service("examLoadingService")
+@Transactional
+public class ExamLoadingServiceImpl implements ExamLoadingSerivice{
+
+	@Autowired
+	ExamLoadingRepository examLoadingRepository;
+	public List<ExamQuestion> getQuestionsList(int testId){
+		System.out.println(examLoadingRepository.getQuestionCount(testId));
+		return examLoadingRepository.getQuestionsList(testId);
+	}
+}

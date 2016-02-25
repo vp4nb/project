@@ -1,20 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-<table width="100%" height="100%">
-<tr>
-<td colspan="2" height="10%" align="center" style="background-color: red"><tiles:insertAttribute name="header"/></td></tr>
-<tr height="80%" ><td width="20%" style="background-color: blue"><tiles:insertAttribute name="menu"/></td>
-	<td style="background-color: orange; align: center" width="80%">
-		<tiles:insertAttribute name="body"/></td></tr>
-<tr><td colspan="2" height="10%"><tiles:insertAttribute name="footer"/></td></tr>
-</table>
-</body>
-</html>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>  
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+"http://www.w3.org/TR/html4/loose.dtd">  
+<html>  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+<title><tiles:insertAttribute name="title" ignore="true" /></title>  
+</head>  
+<body>  
+		<%--  <div style="height:20%;background-color: #4CAF50;font:verdana;margin-left:140px;margin-right:140px"><tiles:insertAttribute name="header1" /></div> --%>  
+		 <div style="margin-bottom:10px;margin-left:140px;margin-right:140px;height:25px"><tiles:insertAttribute name="menu" /></div>  
+		 <div style="margin-left:140px;margin-right:140px"><tiles:insertAttribute name="header" /></div>  	
+        <div style=" align:center;height:300px;margin-left:140px;margin-right:140px;float:left;padding:10px;width:80%;border-left:1px solid pink;back">  
+        <tiles:insertAttribute name="body" /></div>  
+        <div style="margin-left:140px;margin-right:140px;clear:both"><tiles:insertAttribute name="footer" /></div>  
+  
+</body>  
+</html>  

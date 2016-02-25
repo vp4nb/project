@@ -21,7 +21,7 @@ public class Faculty {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="FACULTY_ID", unique=true, nullable=false)
+	@Column(name="FACULTY_ID")
 	private int id;
 	@Column(name="FACULTY_NAME", nullable=false)
 	@NotBlank
@@ -33,8 +33,9 @@ public class Faculty {
 	@NotBlank
 	private String passWord;
 	@Transient
-	//@Expression(value="password=repassword")
+	@NotBlank
 	private String rePassWord;
+	@NotBlank
 	@Email
 	@Column(name="FACULTY_EMAIL", nullable=false, unique=true)
 	private String email;

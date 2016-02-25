@@ -11,10 +11,25 @@
 <c:set var="url" value="${pageContext.request.contextPath}"/>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style>
+p{
+ font-family:Arial, Helvetica,sans-serif;
+ font-size:20px;
+ color:blue;
+ padding:10px;
+}
+</style>
 </head>
 <body>
+	<p align="center">FACULTY LOGIN</p>
 	<form:form action="${url}/faculty-login" method="post" modelAttribute="login">
-	<table>
+	<table align="center" width="500px" height="200px" border="0" cellpadding="2px" cellspacing="1px"  bgcolor="#f2f2f2">
+		<tr>
+			<td></td>
+			<td><b style="color:red">${exceptionDetails}</b></td>
+			<td></td>
+		</tr>
+	
 		<tr>
 			<td><form:label path="userName"/>
 			User Name: </td>
@@ -24,7 +39,7 @@
 		<tr>
 			<td><form:label path="passWord"/>
 			Password: </td>
-			<td><form:input path="passWord"/></td>
+			<td><form:password path="passWord"/></td>
 			<td><form:errors path="passWord" cssStyle="color:red"/></td>
 		</tr>
 		<tr>
@@ -32,7 +47,18 @@
 			<td><input type="submit" value="submit"/></td>
 			<td></td>
 		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>Forgot Password?<a>Click here..</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>New User?<a href="${url}/faculty-register">Click here..</a></td>
+		</tr>
 	</table>
 	</form:form>
+	
 </body>
 </html>

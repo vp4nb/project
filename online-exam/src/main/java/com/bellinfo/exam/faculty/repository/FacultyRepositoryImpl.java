@@ -28,7 +28,7 @@ public class FacultyRepositoryImpl implements FacultyRepository{
 	private Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}
-	public int saveFaculty(Faculty faculty)
+	public int saveFaculty(Faculty faculty) throws Exception
 	{
 		return (Integer) getSession().save(faculty);
 	}

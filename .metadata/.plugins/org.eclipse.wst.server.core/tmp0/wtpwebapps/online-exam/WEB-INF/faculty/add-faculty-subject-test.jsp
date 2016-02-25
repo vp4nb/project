@@ -64,7 +64,7 @@
 			<td>
 		</tr>
 		<tr>
-			<td><form:label path="test"/></td>
+			<td><form:label path="test"/>New Test Name: </td>
 			<td><form:input path="test"/></td>
 			<td><form:errors path="test" cssStyle="color:red"/></td>
 		</tr>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+ 
+<tiles-definitions>
+     <definition name="base.defination" template="/WEB-INF/pages/layout.jsp">
+         <put-attribute name="header" value="/WEB-INF/pages/header.jsp"/>
+         <put-attribute name="menu" value="/WEB-INF/pages/menu.jsp"/>
+         <put-attribute name="body" value=""/>
+         <put-attribute name="footer" value="/WEB-INF/pages/footer.jsp" />
+     </definition>
+ 
+     <definition name="faculty-register" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/faculty-register.jsp"/>
+     </definition>
+ 
+    <definition name="success" extends="base.defination">
+        <put-attribute name="body" value="/WEB-INF/faculty/success.jsp"/>
+    </definition>
+    
+    <definition name="faculty-login" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/faculty-login.jsp"/>
+     </definition>
+    
+    
+    
+     <definition name="faculty.defination" template="/WEB-INF/FacultyHome/faculty-layout.jsp">
+         <put-attribute name="header" value="/WEB-INF/FacultyHome/faculty-header.jsp"/>
+         <put-attribute name="menu" value="/WEB-INF/FacultyHome/faculty-menu.jsp"/>
+         <put-attribute name="body" value=""/>
+         <put-attribute name="footer" value="/WEB-INF/FacultyHome/faculty-footer.jsp" />
+     </definition>
+     
+     <definition name="faculty-home" extends="faculty.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/faculty-home.jsp"/>
+     </definition>
+    	
+      <definition name="post-exam" extends="faculty.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/post-exam.jsp"/>
+     </definition>
+     
+      <definition name="add-post-exam-subject" extends="faculty.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/add-post-exam-subject.jsp"/>
+     </definition>
+     
+     <definition name="post-exam-subject-test" extends="faculty.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/post-exam-subject-test.jsp"/>
+     </definition>
+     
+     <definition name="add-post-exam-subject-test" extends="faculty.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/add-post-exam-subject-test.jsp"/>
+     </definition>
+     
+     <definition name="faculty-profile" extends="faculty.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/faculty-profile.jsp"/>
+     </definition>
+     
+      <definition name="add-faculty-subject" extends="faculty.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/add-faculty-subject.jsp"/>
+     </definition>
+     
+     <definition name="faculty-subject-test" extends="faculty.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/faculty-subject-test.jsp"/>
+     </definition>
+     
+      <definition name="add-faculty-subject-test" extends="faculty.defination">
+         <put-attribute name="body" value="/WEB-INF/faculty/add-faculty-subject-test.jsp"/>
+     </definition>
+     <definition name="post-query" extends="faculty.defination">
+        <put-attribute name="body" value="/WEB-INF/faculty/post-query.jsp"/>
+    </definition>
+    
+    
+    <definition name="success-std" extends="base.defination">
+        <put-attribute name="body" value="/WEB-INF/student/success-std.jsp"/>
+    </definition>
+    
+     <definition name="student-register" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/student/student-register.jsp"/>
+     </definition>
+     
+      <definition name="student-login" extends="base.defination">
+         <put-attribute name="body" value="/WEB-INF/student/student-login.jsp"/>
+     </definition>
+     
+     
+     
+      <definition name="student.defination" template="/WEB-INF/StudentHome/student-layout.jsp">
+         <put-attribute name="header" value="/WEB-INF/StudentHome/student-header.jsp"/>
+         <put-attribute name="menu" value="/WEB-INF/StudentHome/student-menu.jsp"/>
+         <put-attribute name="body" value=""/>
+         <put-attribute name="footer" value="/WEB-INF/StudentHome/student-footer.jsp" />
+     </definition>
+     
+     <definition name="student-home" extends="student.defination">
+         <put-attribute name="body" value="/WEB-INF/student/student-home.jsp"/>
+     </definition>
+      <definition name="student-profile" extends="student.defination">
+         <put-attribute name="body" value="/WEB-INF/student/student-profile.jsp"/>
+     </definition>
+     
+     <definition name="add-student-subject" extends="student.defination">
+         <put-attribute name="body" value="/WEB-INF/student/add-student-subject.jsp"/>
+     </definition>
+     
+      <definition name="student-subject-test" extends="student.defination">
+         <put-attribute name="body" value="/WEB-INF/student/student-subject-test.jsp"/>
+     </definition>
+     
+     <definition name="add-student-subject-test" extends="student.defination">
+         <put-attribute name="body" value="/WEB-INF/student/add-student-subject-test.jsp"/>
+     </definition>
+     
+      <definition name="write-exam" extends="student.defination">
+         <put-attribute name="body" value="/WEB-INF/student/write-exam.jsp"/>
+     </definition>
+     
+     <definition name="add-exam-subject" extends="student.defination">
+         <put-attribute name="body" value="/WEB-INF/student/add-exam-subject.jsp"/>
+     </definition>
+     
+     <definition name="exam-subject-test" extends="student.defination">
+         <put-attribute name="body" value="/WEB-INF/student/exam-subject-test.jsp"/>
+     </definition>
+     
+      <definition name="query-display" extends="student.defination">
+         <put-attribute name="body" value="/WEB-INF/student/query-display.jsp"/>
+     </definition>
+     
+      <definition name="score-display" extends="student.defination">
+         <put-attribute name="body" value="/WEB-INF/student/score-display.jsp"/>
+     </definition>
+   </tiles-definitions>

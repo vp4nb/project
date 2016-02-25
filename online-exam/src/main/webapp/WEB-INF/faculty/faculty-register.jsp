@@ -12,11 +12,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body bgcolor="#66ccff">
+	<h1 align="center">FACULTY REGISTRATION</h1>
 	<form:form action="${url}/faculty-register" method="post" modelAttribute="faculty">
-	<table>
+	<table align="center">
 		<tr>
-			<td><form:label path="name"/>
+			<td></td>
+			<td><b style="color:red">${exceptionDetails}</b></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><form:label path="name" cssStyle="color:blue"/>
 			Full Name: </td>
 			<td><form:input path="name"/></td>
 			<td><form:errors path="name" cssStyle="color:red"/></td>
@@ -30,13 +36,13 @@
 		<tr>
 			<td><form:label path="passWord"/>
 			Password: </td>
-			<td><form:input path="passWord"/></td>
+			<td><form:password path="passWord"/></td>
 			<td><form:errors path="passWord" cssStyle="color:red"/></td>
 		</tr>
 		<tr>
 			<td><form:label path="rePassWord"/>
 			Confirm Password: </td>
-			<td><form:input path="rePassWord"/></td>
+			<td><form:password path="rePassWord"/></td>
 			<td><form:errors path="rePassWord" cssStyle="color:red"/></td>
 		</tr>
 		<tr>

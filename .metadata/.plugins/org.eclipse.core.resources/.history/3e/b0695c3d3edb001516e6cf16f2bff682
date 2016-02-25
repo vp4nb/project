@@ -1,0 +1,21 @@
+package com.bellinfo.exam.student.service;
+
+import java.util.List;
+
+import com.bellinfo.exam.model.Student;
+import com.bellinfo.exam.model.StudentSubject;
+import com.bellinfo.exam.model.FacultySubjectTests;
+import com.bellinfo.exam.model.Login;
+import com.bellinfo.exam.model.Student;
+
+public interface StudentService {
+
+	public int saveStudent(Student student) throws Exception;
+	public Student getStudent(Login login);
+	public Student getStudent(int studentId);
+	public List<StudentSubject> getSubject(int studentId);
+	public boolean saveSubject(StudentSubject subject) throws Exception;
+	public StudentSubject getSubjectBySubjectId(int subjectId);
+	public List<FacultySubjectTests> getSubjectTests(int subjectId);
+	
+}

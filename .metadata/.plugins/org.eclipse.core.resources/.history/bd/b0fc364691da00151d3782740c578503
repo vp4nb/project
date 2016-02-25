@@ -1,0 +1,5 @@
+package com.bellinfo.exam.student.service;
+
+public class ExamLoadingServiceImpl implements ExamLoadingService{
+
+}

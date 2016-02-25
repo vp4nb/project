@@ -8,7 +8,7 @@ import com.bellinfo.exam.model.FacultySubjectTests;
 import com.bellinfo.exam.model.Login;
 
 public interface FacultyRepository {
-	public int saveFaculty(Faculty faculty);
+	public int saveFaculty(Faculty faculty) throws Exception;
 	public Faculty getFaculty(Login login);
 	public Faculty getFaculty(int facultyId);
 	public List<FacultySubject> getSubject(int facultyId);

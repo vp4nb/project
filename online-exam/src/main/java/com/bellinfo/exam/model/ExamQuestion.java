@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -19,16 +20,22 @@ public class ExamQuestion {
 	@Column(name="QUESTION_ID")
 	private int questionId;
 	@Column(name="QUESTION", length=1000, unique=true, nullable=false)
+	@NotBlank
 	private String question;
 	@Column(name="OPTION1", nullable=false)
+	@NotBlank
 	private String option1;
 	@Column(name="OPTION2", nullable=false)
+	@NotBlank
 	private String option2;
 	@Column(name="OPTION3", nullable=false)
+	@NotBlank
 	private String option3;
 	@Column(name="OPTION4", nullable=false)
+	@NotBlank
 	private String option4;
 	@Column(name="ANSWER", nullable=false)
+	@NotBlank
 	private String answer;
 	@Column(name="SUBJECT_ID")
 	private int subjectId;

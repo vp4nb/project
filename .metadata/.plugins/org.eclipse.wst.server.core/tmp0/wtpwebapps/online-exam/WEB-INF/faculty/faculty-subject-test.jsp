@@ -57,8 +57,7 @@
 	</tr>
 	<tr>
 		<td></td>
-		<td></td>
-		<td><a href="${url}/faculty/${facultyId}/subject/${subject.id}/test/add">+ add more</a></td>
+		<td colspan="2"><a href="${url}/faculty/${facultyId}/subject/${subject.id}/test/add">+ add more</a></td>
 	<tr/>
 </table>
 

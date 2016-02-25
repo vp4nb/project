@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bellinfo.exam.faculty.service.FacultyService;
+import com.bellinfo.exam.model.Faculty;
 import com.bellinfo.exam.model.Login;
 @Controller
 public class FacultyLoginController {
@@ -18,6 +19,8 @@ public class FacultyLoginController {
 	Login login;
 	@Autowired
 	FacultyService facultyService;
+	@Autowired
+	Faculty faculty;
 	
 	@RequestMapping(value="/faculty-login", method=RequestMethod.GET)
 	public String facultyLogin(Model model){
@@ -30,9 +33,22 @@ public class FacultyLoginController {
 		{
 			return "faculty-login";
 		}
-		model.addAttribute("facultyId",facultyService.getFaculty(login));
-		return "success";
+		if((faculty = facultyService.getFaculty(login))!=null){
+			model.addAttribute("faculty",faculty);
+			model.addAttribute("facultyId", faculty.getId());
+		return "faculty-home";
+		}
+		else
+		{
+			model.addAttribute("exceptionDetails","your credentials are mismatch");
+			return "faculty-login";
+		}
 	}
-	
+	@RequestMapping(value="/faculty/{facultyId}/home", method=RequestMethod.GET)
+	public String facultyHome(Model model){
+		model.addAttribute("faculty",faculty);
+		model.addAttribute("facultyId", faculty.getId());
+		return "faculty-home";
+	}
 	
 }

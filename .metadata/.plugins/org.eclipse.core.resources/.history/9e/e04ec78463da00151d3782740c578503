@@ -1,0 +1,59 @@
+package com.bellinfo.exam.student.repository;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.bellinfo.exam.model.Faculty;
+import com.bellinfo.exam.model.FacultySubject;
+import com.bellinfo.exam.model.Login;
+import com.bellinfo.exam.model.Student;
+import com.bellinfo.exam.model.StudentSubject;
+
+@Repository("srepo")
+@Transactional
+public class StudentRepositoryImpl implements StudentRepository{
+
+	@Autowired
+	SessionFactory sessionFactory;
+	private Session getSession(){
+		return sessionFactory.getCurrentSession();
+	}
+	public int saveStudent(Student student) {
+		return (Integer) getSession().save(student);
+	}
+	public Student getStudent(Login login) {
+		Criteria cr=getSession().createCriteria(Student.class);
+		Criterion crt_userName=Restrictions.ilike("userName", login.getUserName());
+		Criterion crt_passWord=Restrictions.ilike("passWord", login.getPassWord());
+		cr.add(crt_userName);
+		cr.add(crt_passWord);
+		return (Student) cr.uniqueResult();
+	}
+	public Student getStudent(int studentId) {
+		return (Student) getSession().get(Student.class, studentId);
+	}
+	public List<StudentSubject> getSubject(int studentId) {
+		Criteria cr=getSession().createCriteria(FacultySubject.class);
+		Criterion crt_Id=Restrictions.eq("studentId",studentId);
+		cr.add(crt_Id);
+		return cr.list();
+	}
+	public boolean saveSubject(StudentSubject subject) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public StudentSubject getSubjectBySubjectId(int subjectId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}
